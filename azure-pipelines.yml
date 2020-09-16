@@ -20,6 +20,6 @@ steps:
     location: 'Central US'
     templateLocation: 'Linked artifact'
     csmFile: 'CreateWebApp/azuredeploy.json'
-    overrideParameters: '-projectName ADOARPP -linkedTemplateUri https://raw.githubusercontent.com/saumitraw/ADOARMP/master/CreateWebApp/linkedStorageAccount.json'
+    overrideParameters: '-projectName store2sw20200916 -linkedTemplateUri https://raw.githubusercontent.com/saumitraw/ADOARMP/master/CreateWebApp/linkedStorageAccount.json'
     deploymentMode: 'Incremental'
     deploymentName: 'DeployPipelineTemplate'
