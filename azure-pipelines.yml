@@ -11,6 +11,13 @@ pool:
 
 steps:
 - task: AzureResourceManagerTemplateDeployment@3
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    action: 'Create Or Update Resource Group'
+    templateLocation: 'Linked artifact'
+    deploymentMode: 'Incremental'
+    deploymentName: 'DeployPipelineTemplate1'
   inputs:
     deploymentScope: 'Resource Group'
     azureResourceManagerConnection: 'AzureRmPipeline-conn'
