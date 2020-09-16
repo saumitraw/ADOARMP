@@ -1,0 +1,25 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'AzureRmPipeline-conn'
+    subscriptionId: 'e9a450fe-09cf-44d3-a64d-e6422e468126'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'AzureRmPipeline-rg'
+    location: 'Central US'
+    templateLocation: 'Linked artifact'
+    csmFile: 'CreateWebApp/azuredeploy.json'
+    overrideParameters: 'Enter -projectName [ADOARPP] -linkedTemplateUri [https://raw.githubusercontent.com/saumitraw/ADOARMP/master/CreateWebApp/linkedStorageAccount.json?token=AQTBBAGPLRCOT2LSKSTKJCK7MHPVQ]'
+    deploymentMode: 'Incremental'
+    deploymentName: 'DeployPipelineTemplate'
